@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1904
     height: 981
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -648,9 +648,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0.73574615, y: 3.243529, z: -8.296418}
+    m_Target: {x: -13.581024, y: -0.06892034, z: 1.9320349}
     speed: 2
-    m_Value: {x: 0.73574615, y: 3.243529, z: -8.296418}
+    m_Value: {x: -13.581024, y: -0.06892034, z: 1.9320349}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -696,13 +696,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17711528, y: -0.38206556, z: 0.07490077, w: 0.9039464}
+    m_Target: {x: 0.2593078, y: 0.51504195, z: -0.16694611, w: 0.79981154}
     speed: 2
-    m_Value: {x: 0.1771088, y: -0.3820516, z: 0.07489803, w: 0.9039133}
+    m_Value: {x: 0.25929767, y: 0.5150218, z: -0.16693959, w: 0.79978025}
   m_Size:
-    m_Target: 0.81882685
+    m_Target: 16.339878
     speed: 2
-    m_Value: 0.81882685
+    m_Value: 16.339878
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1044,7 +1044,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 8}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 598
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

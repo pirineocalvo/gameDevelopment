@@ -23,6 +23,9 @@ public class PlayerScript : MonoBehaviour{
     //Spawn point
     public Transform spawnPoint;
 
+    //Pantalla final
+    private bool IsWin;
+
     // Start es llamado en el primer frame
     void Start(){
         getJump = GetComponent<Rigidbody>();
@@ -71,6 +74,12 @@ public class PlayerScript : MonoBehaviour{
 
         if (collision.gameObject.tag == "DeathZone"){
             transform.position = spawnPoint.position;
+        }
+
+        //Pantalla final
+        if (collision.gameObject.tag == "End" && !IsWin){
+            UIManager.uiManager.showWinScreen();
+            IsWin = true;
         }
     }
 

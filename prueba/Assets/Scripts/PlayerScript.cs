@@ -26,42 +26,62 @@ public class PlayerScript : MonoBehaviour{
     //Pantalla final
     private bool IsWin;
 
+    //audio
+    private AudioSource source;
+    public AudioClip jumpSound;
+
     // Start es llamado en el primer frame
     void Start(){
         getJump = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;//Puntero del ratón en el medio de la pantalla
         Cursor.visible = false;//Esconder puntero
+        source = GetComponent<AudioSource>();
     }
 
     // Update es llamado cada frame
     void Update(){
         // Movimiento
-        float forwardBackwards = Input.GetAxis("Horizontal");
-        float rightOrleft = Input.GetAxis("Vertical");
+        if(!IsWin && !UIManager.pause){
+            float forwardBackwards = Input.GetAxis("Horizontal");
+            float rightOrleft = Input.GetAxis("Vertical");
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                speed = maxSpeed;
+            }
+            else
+            {
+                speed = minSpeed;
+            }
+            transform.Translate(new Vector3(forwardBackwards, 0, rightOrleft) * Time.deltaTime * speed);
+
+            //Salto
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                jump();
+            }
+
+            //Cámara
+            rotationX += -Input.GetAxis("Mouse Y") * sensibility;//Restar a X el inverso de Y
+            rotationX = Mathf.Clamp(rotationX, -limitX, limitX);//Estabilizar la cámara para que no haya drift
+            camara.localRotation = Quaternion.Euler(rotationX, 0, 0);//Para que sepa sobre el eje que debe girar
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * sensibility, 0);//Para el eje y, rotamos al propio jugador
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIManager.uiManager.showPauseScreen();
+            }
         
-        if(Input.GetKey(KeyCode.LeftControl)){
-            speed=maxSpeed;
-        }else{
-            speed=minSpeed;
-        }
-        transform.Translate(new Vector3(forwardBackwards, 0, rightOrleft) *Time.deltaTime*speed);
-
-        //Salto
-        if (Input.GetKeyDown(KeyCode.Space)){
-            jump();
         }
 
-        //Cámara
-        rotationX += -Input.GetAxis("Mouse Y") * sensibility;//Restar a X el inverso de Y
-        rotationX=Mathf.Clamp(rotationX, -limitX, limitX);//Estabilizar la cámara para que no haya drift
-        camara.localRotation = Quaternion.Euler(rotationX, 0, 0);//Para que sepa sobre el eje que debe girar
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X")*sensibility, 0);//Para el eje y, rotamos al propio jugador
+        
 
     }
     
     public void jump(){
         if (isGrounded){//Comprobar que esté en el suelo para volver a saltar, y así arreglar bug de salto infinito
             getJump.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+            source.PlayOneShot(jumpSound);
         }
 
     }
